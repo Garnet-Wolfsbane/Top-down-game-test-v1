@@ -1,0 +1,486 @@
+public void keyPressed()
+{
+  if(keyCode == 'Y' && battle == 0)                              // Start (Wolf of the Mountian)
+  {
+    background(0);
+    textSize(20);
+    fill(150, 0, 0);
+    text("The Wolf of the Mountian. His white fur and icy blue eyes are all you can see.", 125, 100);
+    text("Getting close might not be the best idea.", 300, 125);
+    text("You stand before the monster, He appears to be getting ready to attack", 150, 150);
+    text(act, 200, 200);
+    fill(0, 200, 0);
+    text("Player HP:  " + pHP, 400, 450);
+    text(allActions, 25, 500);
+    eHP = (pHP - 10);
+    actions = true; 
+    attacks = false;
+    battle++;
+  }
+// *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
+  if(keyCode == TAB) 
+  {
+    background(0);
+    shop = false;
+    if(battle == 1)
+    {
+      background(0);
+      textSize(20);
+      fill(150, 0, 0);
+      text("The Wolf of the Mountian. His white fur and icy blue eyes are all you can see.", 125, 100);
+      text("Getting close might not be the best idea.", 300, 125);
+      text("You stand before the monster, He appears to be getting ready to attack", 150, 150);
+      text("Monster HP:  " + eHP, 290, 450);
+      text(act, 200, 200);
+      fill(0, 200, 0);
+      text("Player HP:  " + pHP, 490, 450);
+      textSize(20);
+      actions = true;
+      text(allActions, 25, 500);
+      enemyTurn = false;
+    }
+    if(battle == 2)
+    {
+      background(0);
+      textSize(20);
+      fill(150, 0, 0);
+      text("The Shadow of Avalon. A monster with no physical body", 200, 100);
+      text("A dagger might be able to damage it .", 300, 125);
+      text("You stand before the monster, He appears to be getting ready to attack", 165, 150);
+      text("Monster HP:  " + eHP, 290, 450);
+      text(act, 200, 200);
+      fill(0, 200, 0);
+      text("Player HP:  " + pHP, 490, 450);
+      actions = true;
+      text(allActions, 25, 500);
+      enemyTurn = false;
+    }
+  }
+// *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
+  if(keyCode == CONTROL)                                                    //Easter Egg text
+  {
+    background(0);
+    textSize(20);
+    fill(0, 200, 0);
+    text(Luna, 100, 200);
+  }
+// *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
+  if(keyCode == 'R' && actions == true)                                    //Run Away
+  {
+     background(0);
+     textSize(20);
+     fill(0, 200, 0);
+     text("You run away from this fight to the nearest town", 250, 250);
+     text("Press 'Tab' to head back to the fight", 300, 400);
+     //exit();
+  } 
+// *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
+  if(keyCode == 'T' && actions == true)                                        //talk
+  {
+    float option = random(.5, 2.4);
+    option = round(option);
+    if(talking == false)
+    {
+      background(0);
+      text("It doesn't seem to listen to what you have to say", 250, 325);
+      anger++;
+      if(anger >= 4)
+      {
+        float dmg = random(1, 10);
+        dmg = round(dmg);
+        text("The Monster strikes at you", 250, 350);
+        pHP = pHP - dmg;
+        text("Player HP:  " + pHP, 490, 450);
+        if(pHP <= 0)
+        {
+        background(0);
+        textSize(20);
+        fill(150, 0, 0);
+        text("Your lifeless body lays defeated on the grounds of the ancients. You have failed this time.", 75, 300);
+        enemyTurn = false;
+        actions = false;
+        attacks = false;
+        } 
+      }
+    }
+    if(talking == true)
+    {
+      background(0);
+      text("You attempt to talk to it", 350, 200);
+      if(option == 1)
+      {
+        text("It doesn't seem to want to talk", 325, 250);
+        talking = false;
+        text("Press 'Tab' to head back to the fight", 300, 400);
+      }
+      if(option == 2)
+      {
+        boolean O1;
+        boolean O2;
+        text("You think it understood you", 300, 275);
+        text("Options", 400,325);
+        text("Left Arrow: 'Why are we fighting?'", 125, 400);
+        text("Right Arrow: 'Stop! I don't to hurt you.'", 275, 400);
+        O1 = true;
+        if(O1 == true && keyCode == LEFT)
+        {
+          float choose = random(.5, 2.4);
+          choose = round(choose);
+          background(0);
+          text("Left Arrow: 'Why are we fighting?'", 125, 200);
+          if(choose == 1)
+          {
+            fill(150, 0, 0);
+            text("'You came into my territory! Death awaits your sorry soul!'", 125, 250);
+            fill(0, 200, 0);
+            text("Left Arrow: ''", 125, 400);
+            text("Right Arrow: ''", 275, 400);
+          }
+          if(choose == 2)
+          {
+            fill(150, 0, 0);
+            text("''", 125, 250);
+          }
+        }
+        if(O1 == true && keyCode == RIGHT)
+        {
+          
+        }
+      }
+    }
+  }
+// *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
+  if(keyCode == 'A' && actions == true)                                    //Attacks
+  {
+    background(0);
+    textSize(20);
+    fill(0, 200, 0);
+    text("| Press 'D' to use Daggers             |", 100, 100);
+    text("| Press 'B' to use Bow                    |", 100, 125);
+    text("|                                                   |", 100, 150);
+    text("| Press 'Tab' to return to options   |", 100, 175);
+    attacks = true;
+    actions = false;
+  }
+// *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
+  if(keyCode == 'B' && actions == true)                                    //Check Bag
+  {
+     shop = true;
+     background(0);
+     textSize(20);
+     fill(0, 200, 0);
+     text("| Item        Use key       Price    |", 100, 100);
+     text("|                                    |", 100, 125);
+     text("| Potion: Health     P      10 Gold  |", 100, 150);
+     text("| Potion: Dmg Buff    D      20 Gold |", 100, 175);
+     text("|                                    |", 100, 200);
+     text("| Gold: " + pgold + "                |", 100, 225);
+     text("| Player HP:" + pHP + "              |", 100, 250);
+     text("| Max HP:" + hpMax + "               |", 100, 275);
+     text("| Press 'Tab' to return to options   |", 100, 300);
+     actions = false;
+  }
+// *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
+  if(keyCode == 'P' && shop == true && attacks == false)                                      //Potion: Health
+  {
+    if(pgold >= 10 && pHP + 5 <= hpMax)
+    {
+      pgold = pgold - 10;
+      pHP = pHP + 5;
+      shop = true;
+      background(0);
+      textSize(20);
+      fill(0, 200, 0);
+      text("| Item        Use key       Price    |", 100, 100);
+      text("|                                    |", 100, 125);
+      text("| Potion: Health     P      10 Gold  |", 100, 150);
+      text("| Potion: Dmg Buff    D      20 Gold |", 100, 175);
+      text("|                                    |", 100, 200);
+      text("| Gold: " + pgold + "                |", 100, 225);
+      text("| Player HP:" + pHP + "              |", 100, 250);
+      text("| Max HP:" + hpMax + "               |", 100, 275);
+      text("| Press 'Tab' to return to options   |", 100, 300);
+      actions = false;
+    }
+// *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
+    if(keyCode == 'D' && shop == true)                                     //Potion: Dmg Buff
+    {
+      if(pgold >= 20)
+      {
+        pgold = pgold - 20;
+        shop = true;
+        background(0);
+        textSize(20);
+        fill(0, 200, 0);
+        text("| Item        Use key       Price    |", 100, 100);
+        text("|                                    |", 100, 125);
+        text("| Potion: Health     P      10 Gold  |", 100, 150);
+        text("| Potion: Dmg Buff    D      20 Gold |", 100, 175);
+        text("|                                    |", 100, 200);
+        text("| Gold: " + pgold + "                |", 100, 225);
+        text("| Player HP:" + pHP + "              |", 100, 250);
+        text("| Max HP:" + hpMax + "               |", 100, 275);
+        text("| Press 'Tab' to return to options   |", 100, 300);
+        text("| Dmgbuff is on for one attack       |", 100, 325);
+        actions = false;
+        dmgBuff = true;
+      }
+    }
+  }
+// *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
+  if(keyCode == 'B' && attacks == true)                                    //Attacks: Bow 
+   {
+     background(0);
+     textSize(20);
+     fill(0, 200, 0);
+     float bowdmg = random(1, 10);
+     bowdmg = round(bowdmg);
+     if(dmgBuff == true)
+     {
+       bowdmg = bowdmg * bowdmg; 
+     }
+     if(bowAttack == 1)
+     {
+        text("| You pull out your bow and shoot the Beast in the chest for: " + bowdmg + " |", 300, 250);
+     }
+     if(bowAttack == 2)
+     {
+       text("| As the Monster gets too close, you take your arrow and stab it for: " + bowdmg +" |",300 ,250);
+     }
+     if(bowAttack == 3)
+     {
+       text("| " + bowdmg +" |",300 ,250);
+     }
+     if(bowAttack == 4)
+     {
+       text("| " + bowdmg +" |",300 ,250);
+     }
+     eHP -= bowdmg;
+     enemyTurn = true;
+     if(eHP <= 0)
+     {
+       enemyDead = true;
+     }
+     if(enemyDead == true)
+     {
+       background(0);
+       textSize(20);
+       fill(0, 175, 0);
+       float reward = random((25+ (lvl * 2)),(125 + (lvl * 2)));
+       reward = round(reward);
+       text("The foe is vanquised. You bring the head of the monster to a local guild hall", 125, 200);
+       text("They give you " + reward + " gold coins.", 325, 250);  
+       text("Press Y head to the next Monster", 325, 400);
+       shop = true;
+       pgold += reward;
+       pHP = hpMax;
+       lvl++;
+       enemyTurn = false;
+       //exit();
+    }
+    attacks = false;
+    bowAttack++;
+    if(bowAttack == 4)
+    {
+      bowAttack = 0;
+    }
+   }
+// *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
+   if(keyCode == 'D' && attacks == true)                                  //Attacks: Daggers
+   {
+     background(0);
+     textSize(20);
+     fill(0, 200, 0);
+     float daggerdmg = random(1, 7);
+     daggerdmg = round(daggerdmg);
+     if(dmgBuff == true)
+     {
+       daggerdmg = daggerdmg * daggerdmg; 
+     }
+     //if(daggerAttack == 1)
+     //{
+       text("| You use your daggers and deal: " + daggerdmg + " |", 300, 250);
+     //}
+     //if(daggerAttack == 2)
+     //{
+     //  text("| " + daggerdmg +" |", ,250);
+     //}
+     //if(daggerAttack == 3)
+     //{
+     //  text("| " + daggerdmg +" |", ,250);
+     //}
+     //if(daggerAttack == 4)
+     //{
+     //  text("| " + daggerdmg +" |", ,250);
+     //}
+     eHP -= daggerdmg;
+     enemyTurn = true;
+     if(eHP <= 0)
+     {
+       enemyDead = true;
+       enemyTurn = false;
+     }
+     if(enemyDead == true)
+     {
+       background(0);
+       textSize(20);
+       fill(0, 175, 0);
+       float reward = random((25+ (lvl * 2)),(125 + (lvl * 2)));
+       reward = round(reward);
+       text("The foe is vanquised. You bring the head of the monster to a local guild hall", 125, 200);
+       text("They give you " + reward + " gold coins.", 325, 250);  
+       text("Press Y head to the next Monster", 325, 400);
+       shop = true;
+       pgold += reward;
+       lvl++;
+       pHP = hpMax;
+       enemyTurn = false;
+       //exit();
+    }
+    attacks = false;
+    daggerAttack++;
+    if(daggerAttack == 4)
+    {
+      daggerAttack = 0;
+    }
+   }
+// *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
+   if(keyCode == 'Y' && enemyDead == true)                                  //Next Battle
+   {
+     battle++;
+     enemyDead = false;
+     enemyTurn = true;
+   }
+// *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
+   if(enemyTurn == true)                                                    //Enemy turn
+  {
+
+    if(battle == 1)                                                         // Wolf of the Mountian
+    { 
+      //eHP = (pHP - 10);
+      actions = true; 
+      float clawdmg = random(1, 10);
+      clawdmg = round(clawdmg);
+        if(playerDead == false || enemyDead == false)
+        {
+          background(0);
+          textSize(20);
+          fill(150, 0, 0);
+          text("The Wolf of the Mountian. His white fur and icy blue eyes are all you can see.", 125, 100);
+          text("Getting close might not be the best idea.", 300, 125);
+          text("You stand before the monster, He appears to be getting ready to attack", 150, 150);
+          //if(wolfAttack == 1)
+          // {
+              text("| The Wolf sinks its claws into you for: " + clawdmg + " |", 250, 300);
+          // }
+          // if(wolfAttack == 2)
+          // {
+          //    text("", ,300);
+          // }
+          // if(wolfAttack == 3)
+          // {
+          //    text("", ,300);
+          // }
+          // if(wolfAttack == 4)
+          // {
+          //    text("", ,300);
+          // }
+          text("Monster HP:  " + eHP, 290, 450);
+          pHP -= clawdmg;
+          text(act, 200, 200);
+          fill(0, 200, 0);
+          text("Player HP:  " + pHP, 490, 450);
+          textSize(20);
+          actions = true;
+          text(allActions, 25, 500);
+          enemyTurn = false;
+          wolfAttack++;
+          if(wolfAttack == 4)
+          {
+            wolfAttack = 0;
+          }
+        }
+        if(pHP <= 0)
+        {
+          playerDead = true;
+        }
+       if(playerDead == true)
+        {
+        background(0);
+        textSize(20);
+        fill(150, 0, 0);
+        text("Your lifeless body lays defeated on the grounds of the ancients. You have failed this time.", 75, 300);
+        enemyTurn = false;
+        actions = false;
+        attacks = false;
+        }
+      }
+// *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
+    if(battle == 2)                                                                // Shadow of Avalon
+    {
+      background(0);
+      textSize(20);
+      fill(150, 0, 0);
+      text("The Shadow of Avalon. A monster with no physical body", 200, 100);
+      text("A dagger might be able to damage it .", 300, 125);
+      text("You stand before the monster, He appears to be getting ready to attack", 165, 150);
+      text(act, 200, 200);
+      text("Player HP:  " + pHP, 390, 450);
+      text(allActions, 25, 500);
+      
+      eHP = (pHP + 10);
+      actions = true; 
+      float mindWar = random(1, 15);
+      mindWar = round(mindWar);
+        if(playerDead == false || enemyDead == false)
+        {
+          background(0);
+          textSize(20);
+          fill(150, 0, 0);
+          text("The Shadow of Avalon. A monster with no physical body", 200, 100);
+          text("A dagger might be able to damage it .", 300, 125);
+          text("You stand before the monster, He appears to be getting ready to attack", 165, 150);
+          //if(shadowAttack == 1)
+          // {
+              text("| The Shadow stares into you, causing you to take: " + mindWar + " dmg from fighting yourself durning a Mind War |", 50, 300);
+          // }
+          // if(shadowAttack == 2)
+          // {
+          //    text("", ,300);
+          // }
+          // if(shadowAttack == 3)
+          // {
+          //    text("", ,300);
+          // }
+          // if(shadowAttack == 4)
+          // {
+          //    text("", ,300);
+          // }
+          text("Monster HP:  " + eHP, 290, 450);
+          pHP -= mindWar;
+          text(act, 200, 200);
+          fill(0, 200, 0);
+          text("Player HP:  " + pHP, 490, 450);
+          actions = true;
+          text(allActions, 25, 500);
+          enemyTurn = false;
+        }
+        if(pHP <= 0)
+        {
+          playerDead = true;
+        }
+        if(playerDead == true)
+        {
+        background(0);
+        textSize(20);
+        fill(150, 0, 0);
+        text("Your body is under the Shadow's control. He uses you in his army to destroy all life.", 100, 250);  
+        text("You have failed this time", 350, 300);
+        enemyTurn = false;
+        actions = false;
+        attacks = false;
+        }
+      }
+    }
+    
+  }
