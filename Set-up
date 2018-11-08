@@ -1,0 +1,27 @@
+// top down game combat test by: Kenmur "Jasper" Buirak
+
+float battle = 0;
+
+void setup()
+{
+  size(1000, 600);
+  background(0);
+  textSize(25);
+  text("Top Down Game Test", 375, 250);
+  text("By: Gabriel 'Kenmur' Schuh", 335, 300);
+  text("Press Y to start!", 400, 400);
+}
+
+void draw()
+{
+  //background(25);
+}
+
+//Notes:
+
+// Fix talk
+// Fix dmg buff
+// Work on Bow, Dagger, Wolf, and Shadow attack texts
+// Fix Shadow of Avalon (Life after death / using potions resets the SoA's HP to max)
+// Turn secret string to an NPC (HIgh == ally; Low == Enemy)
+// Add PVectors to this in some way shape or form
