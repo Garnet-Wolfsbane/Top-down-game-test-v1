@@ -1,0 +1,30 @@
+float lvl = 1;
+float pHP = 30 + (lvl * 2);
+float hpMax = 30 + (lvl * 2);
+float eHP = 0;
+float pgold = 200;
+float edmg = 0;
+float pdmg = 0;
+float anger = 0;
+float bowAttack = 0;
+float daggerAttack = 0;
+float wolfAttack = 0;
+float shadowAttack = 0;
+// *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  * 
+String act = ("                              What do you do?");
+String attack = ("| Press 'A' to Attack    |  ");
+String run = ("| Press 'R' to Run Away  |  ");
+String talk = ("| Press 'T' to Talk      |  ");
+String bag = ("| Press 'B' to Check Bag |  ");
+String allActions = (attack + run + talk + bag);
+// *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  * 
+String Luna = ("Can't You see the the vengeance in my eyes?");
+// *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  * 
+boolean actions = false;
+boolean attacks = false;
+boolean enemyTurn = false;
+boolean enemyDead = false;
+boolean playerDead = false;
+boolean shop = false;
+boolean dmgBuff = false;
+boolean talking = true;
